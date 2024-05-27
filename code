@@ -1,0 +1,18 @@
+int CautaPoz(int a[], int n){
+    int sum[5000]{};
+    
+    sum[0] = a[0];
+    for(int i = 1; i < n; ++ i){
+        sum[i] += a[i] + sum[i - 1];
+    }
+
+    int diferentaMinima = INT_MAX, indice = 0;
+    for(int i = 0; i < n - 1; ++ i){
+        if((abs)(sum[i] - (sum[n - 1] - sum[i])) < diferentaMinima){
+            diferentaMinima = (abs)(sum[i] - (sum[n - 1] - sum[i]));
+            indice = i;
+        }
+    }
+    
+    return indice;
+}
